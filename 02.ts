@@ -7,41 +7,42 @@ Presentar en un repositorio de GitHub en grupo de no mas de 4 personas
 En el repositorio debe figurar la actividad de cada integrante del grupo */
 
 class Tarea {
-  constructor(
-    public id: number,
-    public descripcion: string,
-    public completada: boolean
-  ) {}
-}
-
-class ListaTareas {
-  private tareas: Tarea[];
-
-  constructor() {
-    this.tareas = [];
+    constructor(
+      public id: number,
+      public descripcion: string,
+      public completada: boolean
+    ) {}
   }
-
-  public agregarTarea(tarea: Tarea): void {
-    this.tareas.push(tarea);
-  }
-
-  public marcarTareaCompleta(id: number): void {
-    const tarea = this.buscarTareaPorId(id);
-    if (tarea) {
-      tarea.completada = true;
+  
+  class ListaTareas {
+    private tareas: Tarea[];
+  
+    constructor() {
+      this.tareas = [];
+    }
+  
+    public agregarTarea(tarea: Tarea): void {
+      this.tareas.push(tarea);
+    }
+  
+    public marcarTareaCompleta(id: number): void {
+      const tarea = this.buscarTareaPorId(id);
+      if (tarea) {
+        tarea.completada = true;
+      }
+    }
+  
+    public listarTareas(): void {
+      console.log("Lista de tareas:");
+      this.tareas.forEach((tarea) => {
+        console.log(
+          `ID: ${tarea.id} | Descripción: ${tarea.descripcion} | Completada: ${tarea.completada}`
+        );
+      });
+    }
+  
+    private buscarTareaPorId(id: number): Tarea | undefined {
+      return this.tareas.find((tarea) => tarea.id === id);
     }
   }
-
-  public listarTareas(): void {
-    console.log("Lista de tareas:");
-    this.tareas.forEach((tarea) => {
-      console.log(
-        `ID: ${tarea.id} | Descripción: ${tarea.descripcion} | Completada: ${tarea.completada}`
-      );
-    });
-  }
-
-  private buscarTareaPorId(id: number): Tarea | undefined {
-    return this.tareas.find((tarea) => tarea.id === id);
-  }
-}
+  
