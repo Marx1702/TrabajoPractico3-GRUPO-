@@ -1,29 +1,30 @@
-// Inicializar un proyecto de nodejs configurado para TypesCript ejercicio 1 crear una clase abstracta llamada Animal y dos clases hijas llamadas Perro y Gato que extiendan la clase Animal. Cada una de las clases hijas debe implementar el método hacerSonido() de forma diferentea
-
 abstract class Animal {
-protected nombre: string;
+protected name: string;
 
-constructor(nombre: string) {
-    this.nombre = nombre;
+constructor(name: string) {
+    this.name = name;
 }
 
-abstract HaceSonido(): void;
+abstract makeSound(): void;
 }
 
-class Perro extends Animal {
-HaceSonido(): void {
-    console.log(this.nombre + " ladra");
-}
-}
-
-class Gato extends Animal {
-HaceSonido(): void {
-    console.log(this.nombre + " maulla");
+class Dog extends Animal {
+makeSound(): void {
+    console.log(this.name + " says Woof!");
 }
 }
 
-const Perro1 = new Perro("Arcel");
-Perro.HaceSonido(); // Output: Bobby says Woof!
+class Cat extends Animal {
+makeSound(): void {
+    console.log(this.name + " says Meow!");
+}
+}
 
-const Gato1 = new Gato("Minina");
-Gato.HaceSonido(); // Output: Kitty says Meow!
+// Intentar instanciar la clase abstracta dará un error
+// const animal = new Animal("Animal"); // Error: No se puede crear una instancia de una clase abstracta
+
+const dog = new Dog("Bobby");
+dog.makeSound(); // Output: Bobby says Woof!
+
+const cat = new Cat("Kitty");
+cat.makeSound(); // Output: Kitty says Meow!
